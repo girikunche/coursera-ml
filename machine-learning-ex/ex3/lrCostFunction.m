@@ -36,17 +36,18 @@ grad = zeros(size(theta));
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
 
+%   Compute Cost Function
+
+Sigma =sigmoid(X * theta);
+J= mean (-y .* log(Sigma) - (1-y) .* log(1 - Sigma)) + sum(theta(2:end) .^2) * lambda / (2 * m);
+
+%Calculate the gradient
+
+temp= theta;
+temp(1)=0;
+
+grad=(X' * (Sigma - y) ./ m )+ temp*lambda/m;
 
 
-
-
-
-
-
-
-
-% =============================================================
-
-grad = grad(:);
 
 end
